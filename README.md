@@ -5,7 +5,7 @@
    
 Circular RNAs (circRNAs) can regulate microRNA activity and are related to various diseases, such as cancer. Functional research on circRNAs is the focus of scientific research. Accurate identification of circRNAs is important for gaining insight into their functions.
 
-We developed a novel framework, MiGNN2CDS, for predicting circRNA and drug sensitivity association. MiGNN2CDS uses four different feature encoding schemes and adopts a multilayer convolutional neural network and bidirectional long short-term memory network to learn high-order feature representation and make circRNA predictions. 
+We developed a novel framework, MiGNN2CDS, for predicting circRNA and drug sensitivity association. MiGNN2CDS first extracts similar features of circRNAs and drugs and the structural features of drugs to construct a heterogeneous network. To learn the deep embedding features of the heterogeneous network, we designed a heterogeneous graph convolutional neural network architecture. By introducing instance learning, we subsequently designed a pseudo-metapath instance generator and a bidirectional translation embedding projector BiTrans to learn the metapath-level representation of circRNA-drug pairs. Finally, an interpretable multiscale attention network joint predictor is designed to achieve accurate prediction and interpretable analysis of circRNA–drug sensitivity associations.. 
 
 2. Availability
 
