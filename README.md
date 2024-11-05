@@ -9,11 +9,13 @@ We developed a novel framework, MiGNN2CDS, for predicting circRNA and drug sensi
 
 2. Availability
 
-2.1 Datasets and source code are available at:https://github.com/nmt315320/CircDC.git.
+2.1 Datasets and source code are available at:https://github.com/nmt315320/MiGNN2CDS.git.
 
-sequence Data：circRNA data, .bed format
-
-hg38.fa---Because the data is relatively large, you need to download it yourself.
+association.csv:circRNA-drug sensitivity association dataset.
+drug_str_sim.csv:circRNA similarity feature dataset.
+gene_seq_sim.csv:drug similarity dataset.
+drug_pubchem_map.csv: a comparison table of drug ids and names in the association matrix. The first column is the id in the association matrix, the second column is the corresponding drug name, and the third column is the drug id in pubchem.
+gene_map.csv: a comparison table of circRNA ids and names in the association matrix. The first column is the id in the association matrix, the second column is the id of the Gene corresponding to circRNA in the ncbi gene database, and the third column is its name.
 
 2.1 Local running
 
@@ -38,12 +40,6 @@ biopython==1.7.8
 numpy==1.19.2
 
 For convenience, we strongly recommended users to install the Anaconda Python 3.7.3 (or above) in your local computer.
-
-2.1.2 Additional requirements
-
-One additional file, namely hg.38.fa, is needed for CircDC, we did not provide this in the source code packages because of the license restriction. This file can be acquired at the following links:
-
-hg38: wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/latest/hg38.fa.gz
 
 3. Running
 
@@ -70,7 +66,4 @@ Use the ``model_intepret.ipynb`` to easily generate topk most important **meta-p
 
 The output file (in ".csv" format) can be found in results folder, which including sequence number, sequence_id, predicted probability and pedicted result.
 
-3.5 SHAP
-
-shapexample.py can be executed to analyze important features. The following methods are: shap.TreeExplainer, shap.summary_plot .
 
