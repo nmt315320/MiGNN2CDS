@@ -5,7 +5,7 @@
    
 Circular RNAs (circRNAs) can regulate microRNA activity and are related to various diseases, such as cancer. Functional research on circRNAs is the focus of scientific research. Accurate identification of circRNAs is important for gaining insight into their functions.
 
-We developed a novel framework, CircDC, for classifying circRNAs from other lncRNAs. CircDC uses four different feature encoding schemes and adopts a multilayer convolutional neural network and bidirectional long short-term memory network to learn high-order feature representation and make circRNA predictions. 
+We developed a novel framework, MiGNN2CDS, for predicting circRNA and drug sensitivity association. MiGNN2CDS uses four different feature encoding schemes and adopts a multilayer convolutional neural network and bidirectional long short-term memory network to learn high-order feature representation and make circRNA predictions. 
 
 2. Availability
 
@@ -47,63 +47,24 @@ hg38: wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/latest/hg38.f
 
 3. Running
 
-3.1 Feature  Extraction
+## k-fold Cross Validation
+    python main.py -da {DATASET} -sp {SAVED PATH}
+    Main arguments:
+        -da: B-dataset C-dataset F-dataset R-dataset
+        -ag: Aggregation method for bag embedding [sum, mean, Linear, BiTrans]
+        -nl: The number of HeteroGCN layer
+        -tk: The topk similarities in heterogeneous network construction
+        -k : The topk filtering in instance predictor
+        -hf: The dimension of hidden feature
+        -ep: The number of epoches
+        -bs: Batch size
+        -lr: Learning rate
+        -dp: Dropout rate
+    For more arguments, please see args.py
+Note: please see the optimal hyperparameter settings for each benchmark dataset, and other support information in 'supplementary materials.docx'.  
 
- RCM: "extract_rcm_features” is included as a function in the circDC.py file.
-  
- Graph feature: GraphProt-1.0.1  ---See Graphprot-1.0.1/redame.html for details. 
-  
- Sequence feature: Pse-in-one-2.0 ---/Pse-in-One-2.0/docs/Pse-in-One 2.0_manual.pdf.
-  
-3.2 Feature  selection
-
-MRMD2.0:
-
-    usage：python  mrmd2.0.py  -i test.arff -s 1 -e  -1  -l 5  -o metrics.csv  -c Dimensionalized_dataset.csv(See MRMD 2.0/redame for details)
-    
-3.3 CircDC     
-
-Changing working dir to CircDC-master, and then running the following command:
-
-usage:python CircDC.py -i testing.fasta -o results.csv 
--i: name of input_file in fasta format # folder “sequence” is the default file path of the input_file
--o name of output_file # folder “results” is the default file path for result save.
-
-The optional parameters are:
-    parser.add_argument('--data_dir', type=str, default='data/', metavar='<data_directory>',
-                        help='Under this directory, you will have descriptors files ')
-
-    parser.add_argument('--train', type=bool, default=True, help='use this option for training model')
-
-    parser.add_argument('--model_dir', type=str, default='models/',
-                        help='The directory to save the trained models for future prediction')
-
-    parser.add_argument('--predict', type=bool, default=False,
-                        help='Predicting circular RNAs. if using train, then it will be False')
-
-    parser.add_argument('--out_file', type=str, default='prediction.txt',
-                        help='The output file used to store the prediction probability of testing data')
-
-    parser.add_argument('--rcm', type=bool, default=True, help='The modularity of RCM')
-
-    parser.add_argument('--cons', type=bool, default=True, help='The modularity of conservation')
-
-    parser.add_argument('--genome', type=str, default='data/hg38.fasta', help='The Fasta file of genome')
-
-    parser.add_argument('--gtf', type=str, default='data/Homo_sapiens.Ensembl.GRCh38.82.gtf',
-                        help='The gtf annotation file. e.g., hg38.gtf')
-
-    parser.add_argument('--bigwig', type=str, default='data/hg38.phyloP20way.bw',
-                        help='conservation scores in bigWig file format')
-
-    parser.add_argument('--positive_bed', type=str, default='data/circRNA_dataset.bed',
-                        help='BED input file for circular RNAs for training, it should be like:chromosome    start    end    gene')
-
-    parser.add_argument('--negative_bed', type=str, default='data/negative_dataset.bed',
-                        help='BED input file for other long non coding RNAs for training, it should be like:chromosome    start    end    gene')
-    parser.add_argument('--testing_bed', type=str, default='data/test.bed',
-                        help='BED input file for testing data, it should be like:chromosome    start    end    gene')
- 
+## Model Intepretebility
+Use the ``model_intepret.ipynb`` to easily generate topk most important **meta-path instances** for given drug-disease pair (require **pre-trained model** first). 
 
 3.4 Output explaining
 
