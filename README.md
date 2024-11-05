@@ -62,7 +62,7 @@ Note: please see the optimal hyperparameter settings for each benchmark dataset,
 ## Model Intepretebility
 Use the ``model_intepret.ipynb`` to easily generate topk most important **meta-path instances** for given drug-disease pair (require **pre-trained model** first). 
 
-3.4 Output explaining
+## Output explaining
 
 The output file (in ".csv" format) can be found in results folder, which including sequence number, sequence_id, predicted probability and pedicted result.
 
