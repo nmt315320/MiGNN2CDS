@@ -46,7 +46,7 @@ For convenience, we strongly recommended users to install the Anaconda Python 3.
 ## k-fold Cross Validation
     python main.py -da {DATASET} -sp {SAVED PATH}
     Main arguments:
-        -da: B-dataset C-dataset F-dataset R-dataset
+        -da: B-dataset 
         -ag: Aggregation method for bag embedding [sum, mean, Linear, BiTrans]
         -nl: The number of HeteroGCN layer
         -tk: The topk similarities in heterogeneous network construction
