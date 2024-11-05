@@ -9,7 +9,7 @@ We developed a novel framework, MiGNN2CDS, for predicting circRNA and drug sensi
 
 2. Availability
 
-2.1 Datasets and source code are available at:https://github.com/nmt315320/MiGNN2CDS.git.
+## Datasets and source code are available at:https://github.com/nmt315320/MiGNN2CDS.git.
 
 association.csv:circRNA-drug sensitivity association dataset.
 drug_str_sim.csv:circRNA similarity feature dataset.
@@ -17,9 +17,9 @@ gene_seq_sim.csv:drug similarity dataset.
 drug_pubchem_map.csv: a comparison table of drug ids and names in the association matrix. The first column is the id in the association matrix, the second column is the corresponding drug name, and the third column is the drug id in pubchem.
 gene_map.csv: a comparison table of circRNA ids and names in the association matrix. The first column is the id in the association matrix, the second column is the id of the Gene corresponding to circRNA in the ncbi gene database, and the third column is its name.
 
-2.1 Local running
+## Local running
 
-2.1.1 Environment
+## Environment
 
 Before running, please make sure the following packages are installed in Python environment:
 
